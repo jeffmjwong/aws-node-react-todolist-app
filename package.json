@@ -4,7 +4,8 @@
   "description": "Todolist app built with node and react, deploying to aws",
   "private": true,
   "scripts": {
-    "start:dev": "webpack-dev-server"
+    "start:dev": "webpack-dev-server",
+    "build": "webpack --config webpack.dev.config.js"
   },
   "author": "Jeff",
   "license": "MIT",
