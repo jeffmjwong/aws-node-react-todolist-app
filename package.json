@@ -2,7 +2,7 @@
   "name": "node-react-todolist-app",
   "version": "1.0.0",
   "description": "Todolist app built with node and react, deploying to aws",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "start:dev": "webpack-dev-server"
   },
