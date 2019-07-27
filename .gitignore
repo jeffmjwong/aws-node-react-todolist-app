@@ -1,1 +1,5 @@
+# NodeJS modules folder
 node_modules
+
+# Bundled files from webpack
+build
