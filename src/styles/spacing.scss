@@ -1,0 +1,53 @@
+@mixin base-spacing-template($name, $property) {
+  .#{$name}0 {
+    #{$property}: 0;
+  }
+
+  .#{$name}0125 {
+    #{$property}: 0.125rem;
+  }
+
+  .#{$name}025 {
+    #{$property}: 0.25rem;
+  }
+
+  .#{$name}05 {
+    #{$property}: 0.5rem;
+  }
+
+  .#{$name}1 {
+    #{$property}: 1rem;
+  }
+
+  .#{$name}2 {
+    #{$property}: 2rem;
+  }
+
+  .#{$name}3 {
+    #{$property}: 3rem;
+  }
+
+  .#{$name}4 {
+    #{$property}: 4rem;
+  }
+
+  .#{$name}5 {
+    #{$property}: 5rem;
+  }
+
+  .#{$name}6 {
+    #{$property}: 6rem;
+  }
+}
+
+@include base-spacing-template(m, margin);
+@include base-spacing-template(mt, margin-top);
+@include base-spacing-template(mr, margin-right);
+@include base-spacing-template(mb, margin-bottom);
+@include base-spacing-template(ml, margin-left);
+
+@include base-spacing-template(p, padding);
+@include base-spacing-template(pt, padding-top);
+@include base-spacing-template(pr, padding-right);
+@include base-spacing-template(pb, padding-bottom);
+@include base-spacing-template(pl, padding-left);
