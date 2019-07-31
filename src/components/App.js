@@ -1,19 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const App = () => {
-  const returnButton = () => {
-    if (true) {
-      const exclaimationMarks = '!!!';
-      return <button className='ml2'>{`Click me${exclaimationMarks}`}</button>
-    } else {
-      return <button className='ml2'>Click me!</button>
-    }
-  };
+  const [itemList, setItemList] = useState([]);
 
   return (
     <div>
-      <p>Hello world!</p>
-      {returnButton()}
+      <label className="m1">
+        Add item to list:
+        <input />
+        <button>Add!</button>
+      </label>
     </div>
   );
 };
