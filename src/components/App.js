@@ -15,7 +15,6 @@ const App = () => {
       <form onSubmit={submitForm()}>
         <label className='m1'>
           Add item to list:
-
           <input
             className='ml05 mr05'
             onChange={(evt) => setItem(evt.target.value)}
@@ -28,8 +27,8 @@ const App = () => {
 
       <ul>
         {
-          itemList.map(item =>
-            <li>{item}</li>
+          itemList.map((item, index) =>
+            <li key={index}>{item}</li>
           )
         }
       </ul>
