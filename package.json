@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "start:dev": "webpack-dev-server --config webpack.dev.config.js --port 3000 --open",
-    "build": "webpack --config webpack.prod.config.js"
+    "build": "webpack --config webpack.prod.config.js",
+    "start:server": "node server/index.js"
   },
   "author": "Jeff",
   "license": "MIT",
@@ -24,6 +25,7 @@
     "webpack-dev-server": "^3.7.2"
   },
   "dependencies": {
+    "express": "^4.17.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
