@@ -3,3 +3,4 @@ node_modules
 
 # Bundled files from webpack
 build
+server_build
