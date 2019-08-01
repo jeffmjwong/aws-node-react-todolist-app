@@ -6,7 +6,8 @@
   "scripts": {
     "start:dev": "webpack-dev-server --config webpack.dev.config.js --port 3000 --open",
     "build": "webpack --config webpack.prod.config.js",
-    "start:server": "node server/index.js"
+    "start:server": "node server_build/app.js",
+    "build:server": "webpack --config webpack.dev.server.config.js"
   },
   "author": "Jeff",
   "license": "MIT",
