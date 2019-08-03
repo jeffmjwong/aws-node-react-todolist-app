@@ -1,7 +1,14 @@
 import express from 'express';
+import cors from 'cors';
 import db from './db';
 
 const app = express();
+
+const corsOptions = {
+  origin: 'http://localhost:3000'
+};
+
+app.use(cors(corsOptions));
 
 app.get('/', (req, res) => {
   res.status(200).send('Hello world from Express!');
@@ -11,11 +18,9 @@ app.get('/todos', (req, res) => {
   db.one('SELECT * from todos')
     .then(dbres => {
       console.log(dbres.name);
-      // res.send('Hello world from Postgresql!');
       res.status(200).send(dbres.name);
     })
     .catch(err => console.log(err));
-  // res.send('Hello world from Express!');
 });
 
 app.listen(3001, () => {
