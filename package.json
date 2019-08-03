@@ -4,9 +4,10 @@
   "description": "Todolist app built with node and react, deploying to aws",
   "private": true,
   "scripts": {
+    "start:dev": "run-p start:dev:client start:dev:server",
     "start:dev:client": "webpack-dev-server --config webpack.client.dev.config.js --port 3000",
-    "build:client": "webpack --config webpack.client.prod.config.js",
     "start:dev:server": "nodemon --exec babel-node -r node_modules/dotenv/config server/index.js",
+    "build:client": "webpack --config webpack.client.prod.config.js",
     "prebuild:server": "rm -rf server_build",
     "build:server": "webpack --config webpack.server.config.js"
   },
@@ -32,6 +33,7 @@
     "webpack-dev-server": "^3.7.2"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "pg-promise": "^9.0.0",
     "react": "^16.8.6",
