@@ -5,10 +5,6 @@ module.exports = {
   mode: 'development',
   entry: './client/index',
   devtool: 'inline-cheap-source-map',
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'build')
-  },
   plugins: [
     new HtmlWebpackPlugin({ template: './index.html' })
   ],
