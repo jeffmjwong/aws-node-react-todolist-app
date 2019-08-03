@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
@@ -9,7 +10,9 @@ module.exports = {
     filename: 'app.js',
     path: path.resolve(__dirname, 'server_build')
   },
-  plugins: [],
+  plugins: [
+    new webpack.IgnorePlugin(/^pg-native$/), // resolve error module 'pg-native' not found when bundling
+  ],
   module: {
     rules: []
   }
