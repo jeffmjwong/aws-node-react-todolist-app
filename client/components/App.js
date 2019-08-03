@@ -1,8 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const App = () => {
   const [itemList, setItemList] = useState([]);
   const [item, setItem] = useState('');
+
+  useEffect(() => {
+    fetch('http://localhost:3001/todos')
+      .then(results => results.json())
+      .then(data => {
+        console.log(data);
+      })
+      .catch(err => console.err);
+  }, []);
 
   const submitForm = () => (evt) => {
     evt.preventDefault();
