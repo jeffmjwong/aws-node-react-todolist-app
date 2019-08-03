@@ -6,4 +6,4 @@ build
 server_build
 
 # ENV file
-.env
+*.env
