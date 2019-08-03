@@ -6,9 +6,9 @@
   "scripts": {
     "start:dev:client": "webpack-dev-server --config webpack.dev.config.js --port 3000",
     "build": "webpack --config webpack.prod.config.js",
-    "start:dev:server": "build:server && nodemon -r dotenv/config server_build/app.js",
     "prebuild:server": "rm -rf server_build",
-    "build:server": "webpack --config webpack.server.config.js"
+    "build:server": "webpack --config webpack.server.config.js",
+    "start:dev:server": "build:server"
   },
   "author": "Jeff",
   "license": "MIT",
@@ -22,6 +22,7 @@
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.12.0",
     "nodemon": "^1.19.1",
+    "npm-run-all": "^4.1.5",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.37.0",
