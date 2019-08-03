@@ -4,16 +4,18 @@
   "description": "Todolist app built with node and react, deploying to aws",
   "private": true,
   "scripts": {
-    "start:dev:client": "webpack-dev-server --config webpack.dev.config.js --port 3000",
-    "build": "webpack --config webpack.prod.config.js",
+    "start:dev:client": "webpack-dev-server --config webpack.client.dev.config.js --port 3000",
+    "build:client": "webpack --config webpack.client.prod.config.js",
+    "start:dev:server": "nodemon --exec babel-node -r node_modules/dotenv/config server/index.js",
     "prebuild:server": "rm -rf server_build",
-    "build:server": "webpack --config webpack.server.config.js",
-    "start:dev:server": "build:server"
+    "build:server": "webpack --config webpack.server.config.js"
   },
   "author": "Jeff",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.1.0",
@@ -37,6 +39,7 @@
   },
   "babel": {
     "presets": [
+      "@babel/preset-env",
       "@babel/preset-react"
     ]
   }
