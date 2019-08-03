@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   target: 'node',
   entry: './server/index',
   devtool: 'inline-cheap-source-map',
