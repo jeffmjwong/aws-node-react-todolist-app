@@ -6,7 +6,7 @@
   "scripts": {
     "start:dev": "run-p start:dev:client start:dev:server",
     "start:dev:client": "webpack-dev-server --config webpack.client.dev.config.js --port 3000",
-    "start:dev:server": "nodemon --exec babel-node -r node_modules/dotenv/config server/index.js",
+    "start:dev:server": "nodemon --exec babel-node -r node_modules/dotenv/config --inspect server/index.js",
     "build:client": "webpack --config webpack.client.prod.config.js",
     "prebuild:server": "rm -rf server_build",
     "build:server": "webpack --config webpack.server.config.js"
@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.5.5",
+    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "pg-promise": "^9.0.0",
