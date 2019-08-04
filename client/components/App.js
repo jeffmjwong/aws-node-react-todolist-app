@@ -4,7 +4,7 @@ import './App.scss';
 
 const App = () => {
   const [todos, setTodos] = useState([]);
-  const [todo, setTodo] = useState('');
+  const [newTodo, setNewTodo] = useState('');
 
   useEffect(() => {
     getTodos().then(todos => setTodos(todos));
@@ -19,37 +19,39 @@ const App = () => {
     }
   }
 
-  const createTodo = async () => {
+  const createTodo = async (todo) => {
     try {
       const results = await fetch('http://localhost:3001/todos', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ a: 'Booyah!' })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ todo }),
       });
-      const data = await results.json();
+      return await results.json();
     } catch(err) {
       console.log(err);
     }
   }
 
-  // const submitForm = () => (evt) => {
-  //   evt.preventDefault();
+  const submitForm = () => (evt) => {
+    evt.preventDefault();
 
-  //   setTodos([...todos, todo]);
-  //   setTodo('');
-  // };
+    createTodo(newTodo)
+      .then(todo => {
+        setTodos([...todos, todo]);
+        setNewTodo('');
+      })
+      .catch(err => console.log(err));
+  };
 
   return (
     <div>
-      <form onSubmit={createTodo}>
+      <form onSubmit={submitForm()}>
         <label className='m1'>
           Add todo to list:
           <input
             className='ml05 mr05'
-            onChange={(evt) => setTodo(evt.target.value)}
-            value={todo}
+            onChange={(evt) => setNewTodo(evt.target.value)}
+            value={newTodo}
           />
 
           <button>Add!</button>
