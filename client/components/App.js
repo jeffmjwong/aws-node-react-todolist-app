@@ -1,43 +1,51 @@
 import React, { useState, useEffect } from 'react';
 
 const App = () => {
-  const [itemList, setItemList] = useState([]);
-  const [item, setItem] = useState('');
+  const [todos, setTodos] = useState([]);
+  const [todo, setTodo] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:3001/todos')
-      .then(results => results.json())
-      .then(data => {
-        console.log(data);
-      })
-      .catch(err => console.err);
+    getTodos().then(todos => setTodos(todos));
   }, []);
+
+  const getTodos = async () => {
+    try {
+      const results = await fetch('http://localhost:3001/todos');
+      return await results.json();
+    } catch(err) {
+      console.log(err);
+    }
+  }
 
   const submitForm = () => (evt) => {
     evt.preventDefault();
-    setItemList([...itemList, item]);
-    setItem('');
+    setTodos([...todos, todo]);
+    setTodo(null);
   };
 
   return (
     <div>
       <form onSubmit={submitForm()}>
         <label className='m1'>
-          Add item to list:
+          Add todo to list:
           <input
             className='ml05 mr05'
-            onChange={(evt) => setItem(evt.target.value)}
-            value={item}
+            onChange={(evt) => setTodo({ name: evt.target.value })}
+            value={todo}
           />
 
           <button>Add!</button>
         </label>
       </form>
 
+      {/* <div className="mt1">
+        <button onClick={sendRequest}>Send request to /todos</button>
+      </div> */}
+
       <ul>
         {
-          itemList.map((item, index) =>
-            <li key={index}>{item}</li>
+          todos.map(todo =>
+            <li key={todo.id}>{todo.name}</li>
           )
         }
       </ul>
