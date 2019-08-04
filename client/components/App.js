@@ -44,7 +44,6 @@ const App = () => {
         setNewTodo('');
       })
       .catch(err => {
-        debugger;
       });
   };
 
