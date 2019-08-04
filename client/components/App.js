@@ -20,15 +20,18 @@ const App = () => {
   }
 
   const createTodo = async (todo) => {
-    try {
-      const results = await fetch('http://localhost:3001/todos', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ todo }),
-      });
-      return await results.json();
-    } catch(err) {
-      console.log(err);
+    const results = await fetch('http://localhost:3001/todos', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ todo }),
+    });
+
+    if (results.status === 422) {
+      const error = await results.json();
+      throw new Error(error);
+    } else {
+      const data = await results.json();
+      return data;
     }
   }
 
@@ -40,7 +43,9 @@ const App = () => {
         setTodos([...todos, todo]);
         setNewTodo('');
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        debugger;
+      });
   };
 
   return (
