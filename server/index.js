@@ -24,8 +24,10 @@ app.get('/todos', (req, res) => {
 });
 
 app.post('/todos', (req, res) => {
-  debugger;
-  console.log(req);
+  const { todo } = req.body;
+  db.one('INSERT INTO todos(name, created_at, updated_at) VALUES($1, $2, $2) RETURNING *', [todo, new Date()])
+    .then(data => res.json(data))
+    .catch(err => console.log(err));
 })
 
 app.listen(3001, () => {
