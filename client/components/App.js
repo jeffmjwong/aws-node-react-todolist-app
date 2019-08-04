@@ -5,6 +5,7 @@ import './App.scss';
 const App = () => {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState('');
+  const [error, setError] = useState('');
 
   useEffect(() => {
     getTodos().then(todos => setTodos(todos));
@@ -44,6 +45,7 @@ const App = () => {
         setNewTodo('');
       })
       .catch(err => {
+        setError(err);
       });
   };
 
