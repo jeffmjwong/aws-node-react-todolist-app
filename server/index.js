@@ -15,11 +15,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/todos', (req, res) => {
-  db.one('SELECT * from todos')
-    .then(dbres => {
-      console.log(dbres.name);
-      res.status(200).send(dbres.name);
-    })
+  db.any('SELECT * from todos')
+    .then(data => res.json(data))
     .catch(err => console.log(err));
 });
 
