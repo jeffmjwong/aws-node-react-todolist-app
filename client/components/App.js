@@ -4,6 +4,7 @@ import './App.scss';
 
 const App = () => {
   const [todos, setTodos] = useState([]);
+  const [newTodos, setNewTodos] = useState([]);
   const [newTodo, setNewTodo] = useState('');
   const [error, setError] = useState('');
 
@@ -56,10 +57,10 @@ const App = () => {
       <table className="todo-table">
         <thead>
           <tr>
-            <td className="w30 p1">Name</td>
-            <td className="w20 p1">Completed</td>
-            <td className="w20 p1">Number</td>
-            <td className="w30 p1">Date Created</td>
+            <td className="w30">Name</td>
+            <td className="w20">Completed</td>
+            <td className="w20">Number</td>
+            <td className="w30">Date Created</td>
           </tr>
         </thead>
 
@@ -68,7 +69,7 @@ const App = () => {
             todos.map(todo => (
               <tr>
                 <td>
-                  <p>{todo.name}</p>
+                  {todo.name}
                 </td>
 
                 <td>
@@ -76,15 +77,19 @@ const App = () => {
                 </td>
 
                 <td>
-                  <p>{todo.number}</p>
+                  {todo.number}
                 </td>
 
                 <td>
-                  <p>{todo.created_at}</p>
+                  {todo.created_at}
                 </td>
               </tr>
             ))
           }
+
+          <tr>
+            <td><button>+</button></td>
+          </tr>
         </tbody>
       </table>
 
