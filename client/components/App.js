@@ -64,10 +64,6 @@ const App = () => {
         </label>
       </form>
 
-      {/* <div className="mt1">
-        <button onClick={sendRequest}>Send request to /todos</button>
-      </div> */}
-
       <ul className="todo-list">
         {
           todos.map(todo =>
