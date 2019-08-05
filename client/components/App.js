@@ -88,7 +88,9 @@ const App = () => {
           }
 
           <tr>
-            <td><button>+</button></td>
+            <td>
+              <button className="add-todo-button">+</button>
+            </td>
           </tr>
         </tbody>
       </table>
