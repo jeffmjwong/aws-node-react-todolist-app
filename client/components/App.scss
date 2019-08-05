@@ -1,3 +1,11 @@
+.app-container {
+  margin: 1em 2em;
+
+  .todo-title {
+    color: darkblue;
+  }
+}
+
 .todo-list {
   list-style-type: none;
 }
