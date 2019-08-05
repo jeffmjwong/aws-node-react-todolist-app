@@ -4,8 +4,19 @@
   .todo-title {
     color: darkblue;
   }
-}
 
-.todo-list {
-  list-style-type: none;
+  .todo-table {
+    width: 100%;
+
+    & > thead {
+      td {
+        border-bottom: 5px solid darkblue;
+      }
+    }
+
+    td {
+      font-size: 1.2rem;
+      text-align: center;
+    }
+  }
 }
