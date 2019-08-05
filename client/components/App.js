@@ -7,9 +7,9 @@ const App = () => {
   const [newTodo, setNewTodo] = useState('');
   const [error, setError] = useState('');
 
-  // useEffect(() => {
-  //   getTodos().then(todos => setTodos(todos));
-  // }, []);
+  useEffect(() => {
+    getTodos().then(todos => setTodos(todos));
+  }, []);
 
   const getTodos = async () => {
     try {
@@ -56,15 +56,35 @@ const App = () => {
       <table className="todo-table">
         <thead>
           <tr>
-            <td>Name</td>
-            <td>Completed</td>
-            <td>Number</td>
-            <td>Date Created</td>
+            <td className="w30 p1">Name</td>
+            <td className="w20 p1">Completed</td>
+            <td className="w20 p1">Number</td>
+            <td className="w30 p1">Date Created</td>
           </tr>
         </thead>
 
         <tbody>
+          {
+            todos.map(todo => (
+              <tr>
+                <td>
+                  <p>{todo.name}</p>
+                </td>
 
+                <td>
+                  <input type="checkbox" checked={todo.completed} disabled />
+                </td>
+
+                <td>
+                  <p>{todo.number}</p>
+                </td>
+
+                <td>
+                  <p>{todo.created_at}</p>
+                </td>
+              </tr>
+            ))
+          }
         </tbody>
       </table>
 
@@ -80,14 +100,6 @@ const App = () => {
           <button>Add!</button>
         </label>
       </form> */}
-
-      <ul className="todo-list">
-        {
-          todos.map(todo =>
-            <li key={todo.id}>{todo.name}</li>
-          )
-        }
-      </ul>
     </div>
   );
 };
