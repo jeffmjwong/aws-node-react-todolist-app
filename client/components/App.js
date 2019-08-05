@@ -7,9 +7,9 @@ const App = () => {
   const [newTodo, setNewTodo] = useState('');
   const [error, setError] = useState('');
 
-  useEffect(() => {
-    getTodos().then(todos => setTodos(todos));
-  }, []);
+  // useEffect(() => {
+  //   getTodos().then(todos => setTodos(todos));
+  // }, []);
 
   const getTodos = async () => {
     try {
@@ -50,7 +50,9 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className="app-container">
+      <h1 className="todo-title">Todo List</h1>
+
       <form onSubmit={submitForm()}>
         <label className='m1'>
           Add todo to list:
