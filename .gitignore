@@ -7,3 +7,6 @@ server_build
 
 # ENV file
 *.env
+
+# Database schema structure
+sql-table-structure
