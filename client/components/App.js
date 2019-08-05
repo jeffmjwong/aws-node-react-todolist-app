@@ -53,7 +53,22 @@ const App = () => {
     <div className="app-container">
       <h1 className="todo-title">Todo List</h1>
 
-      <form onSubmit={submitForm()}>
+      <table className="todo-table">
+        <thead>
+          <tr>
+            <td>Name</td>
+            <td>Completed</td>
+            <td>Number</td>
+            <td>Date Created</td>
+          </tr>
+        </thead>
+
+        <tbody>
+
+        </tbody>
+      </table>
+
+      {/* <form onSubmit={submitForm()}>
         <label className='m1'>
           Add todo to list:
           <input
@@ -64,7 +79,7 @@ const App = () => {
 
           <button>Add!</button>
         </label>
-      </form>
+      </form> */}
 
       <ul className="todo-list">
         {
