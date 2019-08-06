@@ -37,18 +37,22 @@ const App = () => {
     }
   }
 
-  const submitForm = () => (evt) => {
-    evt.preventDefault();
+  const createNewTodo = () => {
+    setNewTodos([...newTodos, { name: '', completed: false, number: '' }])
+  }
 
-    createTodo(newTodo)
-      .then(todo => {
-        setTodos([...todos, todo]);
-        setNewTodo('');
-      })
-      .catch(err => {
-        setError(err);
-      });
-  };
+  // const submitForm = () => (evt) => {
+  //   evt.preventDefault();
+
+  //   createTodo(newTodo)
+  //     .then(todo => {
+  //       setTodos([...todos, todo]);
+  //       setNewTodo('');
+  //     })
+  //     .catch(err => {
+  //       setError(err);
+  //     });
+  // };
 
   return (
     <div className="app-container">
@@ -87,9 +91,36 @@ const App = () => {
             ))
           }
 
+          {
+            newTodos.map(newTodo => (
+              <tr>
+                <td>
+                  <input type="text" />
+                </td>
+
+                <td>
+                  <input type="checkbox" />
+                </td>
+
+                <td>
+                  <input type="text" />
+                </td>
+
+                <td>
+                  <button>Create</button>
+                </td>
+              </tr>
+            ))
+          }
+
           <tr>
             <td>
-              <button className="add-todo-button">+</button>
+              <button
+                className="add-todo-button"
+                onClick={createNewTodo}
+              >
+                New Todo
+              </button>
             </td>
           </tr>
         </tbody>
