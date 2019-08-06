@@ -108,7 +108,7 @@ const App = () => {
 
                 <td>
                   <input
-                    type="text"
+                    type="number"
                   />
                 </td>
 
