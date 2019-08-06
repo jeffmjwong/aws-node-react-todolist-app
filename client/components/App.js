@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import uuidv1 from 'uuid/v1';
 
 import './App.scss';
 
@@ -19,7 +20,7 @@ const App = () => {
     } catch(err) {
       console.log(err);
     }
-  }
+  };
 
   const createTodo = async (todo) => {
     const results = await fetch('http://localhost:3001/todos', {
@@ -35,11 +36,23 @@ const App = () => {
       const data = await results.json();
       return data;
     }
-  }
+  };
 
   const createNewTodo = () => {
-    setNewTodos([...newTodos, { name: '', completed: false, number: '' }])
-  }
+    setNewTodos([...newTodos, { id: uuidv1(), name: '', completed: false, number: '' }]);
+  };
+
+  const handleNewTodoFieldChange = (newTodoId, field) => (evt) => {
+    setNewTodos(
+      newTodos.map(newTodo => {
+        if (newTodo.id === newTodoId) {
+          return { ...newTodo, [field]: evt.target.value};
+        } else {
+          return { ...newTodo };
+        }
+      });
+    );
+  };
 
   // const submitForm = () => (evt) => {
   //   evt.preventDefault();
@@ -97,6 +110,7 @@ const App = () => {
                 <td>
                   <input
                     type="text"
+                    onChange={handleNewTodoFieldChange(newTodo.id, "name")}
                   />
                 </td>
 
@@ -109,6 +123,7 @@ const App = () => {
                 <td>
                   <input
                     type="number"
+                    onChange={handleNewTodoFieldChange(newTodo.id, "number")}
                   />
                 </td>
 
