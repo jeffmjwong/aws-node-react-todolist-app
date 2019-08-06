@@ -101,7 +101,7 @@ const App = () => {
         <tbody>
           {
             todos.map(todo => (
-              <tr>
+              <tr key={todo.id}>
                 <td>
                   {todo.name}
                 </td>
@@ -127,7 +127,7 @@ const App = () => {
 
           {
             newTodos.map(newTodo => (
-              <tr>
+              <tr key={newTodo.id}>
                 <td>
                   <input
                     type="text"
