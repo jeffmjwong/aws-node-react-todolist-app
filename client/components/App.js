@@ -50,9 +50,26 @@ const App = () => {
         } else {
           return { ...newTodo };
         }
-      });
+      })
     );
   };
+
+  const handleNewTodoCheckboxChange = (newTodoId) => (evt) => {
+    setNewTodos(
+      newTodos.map(newTodo => {
+        if (newTodo.id === newTodoId) {
+          return { ...newTodo, completed: evt.target.checked};
+        } else {
+          return { ...newTodo };
+        }
+      })
+    );
+  };
+
+  const handleSomething = () => {
+    const abc = newTodos;
+    debugger;
+  }
 
   // const submitForm = () => (evt) => {
   //   evt.preventDefault();
@@ -90,7 +107,11 @@ const App = () => {
                 </td>
 
                 <td>
-                  <input type="checkbox" checked={todo.completed} disabled />
+                  <input
+                    type="checkbox"
+                    checked={todo.completed}
+                    disabled
+                  />
                 </td>
 
                 <td>
@@ -117,6 +138,7 @@ const App = () => {
                 <td>
                   <input
                     type="checkbox"
+                    onChange={handleNewTodoCheckboxChange(newTodo.id)}
                   />
                 </td>
 
@@ -146,6 +168,8 @@ const App = () => {
           </tr>
         </tbody>
       </table>
+
+      <button onClick={handleSomething}>Click me</button>
 
       {/* <form onSubmit={submitForm()}>
         <label className='m1'>
