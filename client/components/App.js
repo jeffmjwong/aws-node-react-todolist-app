@@ -95,15 +95,21 @@ const App = () => {
             newTodos.map(newTodo => (
               <tr>
                 <td>
-                  <input type="text" />
+                  <input
+                    type="text"
+                  />
                 </td>
 
                 <td>
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                  />
                 </td>
 
                 <td>
-                  <input type="text" />
+                  <input
+                    type="text"
+                  />
                 </td>
 
                 <td>
