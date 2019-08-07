@@ -7,7 +7,6 @@ import './App.scss';
 const App = () => {
   const [todos, setTodos] = useState([]);
   const [newTodos, setNewTodos] = useState([]);
-  const [newTodo, setNewTodo] = useState('');
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -45,29 +44,16 @@ const App = () => {
   };
 
   const createNewTodo = (newTodoId) => () => {
-    const todo = newTodos.find(newTodo => newTodo.id === newTodoId);
+    const targetTodo = newTodos.find(newTodo => newTodo.id === newTodoId);
+    if (!targetTodo) { setError('Something went wrong!') }
 
-
-    debugger;
+    createTodo(targetTodo)
+      .then(successTodo => {
+        setTodos([...todos, successTodo]);
+        setNewTodos(newTodos.filter(newTodo => newTodo.id !== newTodoId))
+      })
+      .catch(err => setError(err.message));
   };
-
-  const handleSomething = () => {
-    const abc = newTodos;
-    debugger;
-  };
-
-  // const submitForm = () => (evt) => {
-  //   evt.preventDefault();
-
-  //   createTodo(newTodo)
-  //     .then(todo => {
-  //       setTodos([...todos, todo]);
-  //       setNewTodo('');
-  //     })
-  //     .catch(err => {
-  //       setError(err);
-  //     });
-  // };
 
   return (
     <div className="app-container">
@@ -164,19 +150,6 @@ const App = () => {
       {
         error && <div className="error-message">{error}</div>
       }
-
-      {/* <form onSubmit={submitForm()}>
-        <label className='m1'>
-          Add todo to list:
-          <input
-            className='ml05 mr05'
-            onChange={(evt) => setNewTodo(evt.target.value)}
-            value={newTodo}
-          />
-
-          <button>Add!</button>
-        </label>
-      </form> */}
     </div>
   );
 };
