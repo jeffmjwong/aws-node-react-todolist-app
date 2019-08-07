@@ -20,11 +20,12 @@ app.get('/', (req, res) => {
 app.get('/todos', (req, res) => {
   db.any('SELECT * from todos')
     .then(data => res.json(data))
-    .catch(err => console.log(err));
+    .catch(err => res.status(422).json(`Database error: ${err.message}`);
 });
 
 app.post('/todos', (req, res) => {
   const { todo } = req.body;
+
   db.one('INSERT INTO todos(name, created_at, updated_at) VALUES($1, $2, $2) RETURNING *', [todo, new Date()])
     .then(data => {
       res.json(data);
