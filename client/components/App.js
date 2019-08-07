@@ -150,7 +150,11 @@ const App = () => {
                 </td>
 
                 <td>
-                  <button>Create</button>
+                  <button
+                    className="create-todo-button"
+                  >
+                    Create
+                  </button>
                 </td>
               </tr>
             ))
