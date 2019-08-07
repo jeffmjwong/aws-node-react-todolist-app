@@ -26,9 +26,18 @@
 
     .add-todo-button {
       color: darkblue;
-      font-size: 1.1rem;
+      font-size: 0.9rem;
       border: 1px solid darkblue;
-      padding: 0 1rem;
+      padding: 0.2rem 1rem;
+      margin-top: 0.5rem;
+      cursor: pointer;
+    }
+
+    .create-todo-button {
+      color: darkblue;
+      font-size: 0.9rem;
+      border: 1px solid darkblue;
+      padding: 0.2rem 1rem;
       margin-top: 0.5rem;
       cursor: pointer;
     }
