@@ -11,10 +11,12 @@ const App = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    getTodos().then(todos => setTodos(todos));
+    getTodos()
+      .then(todos => setTodos(todos))
+      .catch(err => setError(err.message));
   }, []);
 
-  const createNewTodo = () => {
+  const placeNewTodo = () => {
     setNewTodos([...newTodos, { id: uuidv1(), name: '', completed: false, number: '' }]);
   };
 
@@ -42,10 +44,17 @@ const App = () => {
     );
   };
 
+  const createNewTodo = (newTodoId) => () => {
+    const todo = newTodos.find(newTodo => newTodo.id === newTodoId);
+
+
+    debugger;
+  };
+
   const handleSomething = () => {
     const abc = newTodos;
     debugger;
-  }
+  };
 
   // const submitForm = () => (evt) => {
   //   evt.preventDefault();
@@ -128,6 +137,7 @@ const App = () => {
                 <td>
                   <button
                     className="create-todo-button"
+                    onClick={createNewTodo(newTodo.id)}
                   >
                     Create
                   </button>
@@ -140,7 +150,7 @@ const App = () => {
             <td>
               <button
                 className="add-todo-button"
-                onClick={createNewTodo}
+                onClick={placeNewTodo}
               >
                 New Todo
               </button>
@@ -150,6 +160,10 @@ const App = () => {
       </table>
 
       <button onClick={handleSomething}>Click me</button>
+
+      {
+        error && <div className="error-message">{error}</div>
+      }
 
       {/* <form onSubmit={submitForm()}>
         <label className='m1'>
