@@ -26,7 +26,7 @@ app.get('/todos', (req, res) => {
 app.post('/todos', (req, res) => {
   const { todo } = req.body;
 
-  db.one('INSERT INTO todos(name, created_at, updated_at) VALUES($1, $2, $2) RETURNING *', [todo, new Date()])
+  db.one('INSERT INTO todos(name, completed, number, created_at, updated_at) VALUES($1, $2, $3, $4, $4) RETURNING *', [todo.name, todo.completed, todo.number, new Date()])
     .then(data => res.json(data))
     .catch(err => res.status(422).json(`Database error: ${err.message}`));
 })
