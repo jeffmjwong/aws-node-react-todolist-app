@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import uuidv1 from 'uuid/v1';
 
-import { getTodos } from '../api/todos';
+import { getTodos, createTodo } from '../api/todos';
 import './App.scss';
 
 const App = () => {
@@ -13,31 +13,6 @@ const App = () => {
   useEffect(() => {
     getTodos().then(todos => setTodos(todos));
   }, []);
-
-  // const getTodos = async () => {
-  //   try {
-  //     const results = await fetch('http://localhost:3001/todos');
-  //     return await results.json();
-  //   } catch(err) {
-  //     console.log(err);
-  //   }
-  // };
-
-  const createTodo = async (todo) => {
-    const results = await fetch('http://localhost:3001/todos', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ todo }),
-    });
-
-    if (results.status === 422) {
-      const error = await results.json();
-      throw new Error(error);
-    } else {
-      const data = await results.json();
-      return data;
-    }
-  };
 
   const createNewTodo = () => {
     setNewTodos([...newTodos, { id: uuidv1(), name: '', completed: false, number: '' }]);
