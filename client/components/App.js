@@ -55,6 +55,10 @@ const App = () => {
       .catch(err => setError(err.message));
   };
 
+  const removeNewTodo = (newTodoId) => () => {
+    setNewTodos(newTodos.filter(newTodo => newTodo.id !== newTodoId));
+  }
+
   return (
     <div className="app-container">
       <h1 className="todo-title">Todo List</h1>
@@ -121,12 +125,21 @@ const App = () => {
                 </td>
 
                 <td>
-                  <button
-                    className="create-todo-button"
-                    onClick={createNewTodo(newTodo.id)}
-                  >
-                    Create
-                  </button>
+                  <div>
+                    <button
+                      className="create-todo-button"
+                      onClick={createNewTodo(newTodo.id)}
+                    >
+                      Create
+                    </button>
+
+                    <button
+                      className="create-todo-button"
+                      onClick={removeNewTodo(newTodo.id)}
+                    >
+                      Remove
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))
@@ -144,8 +157,6 @@ const App = () => {
           </tr>
         </tbody>
       </table>
-
-      <button onClick={handleSomething}>Click me</button>
 
       {
         error && <div className="error-message">{error}</div>
