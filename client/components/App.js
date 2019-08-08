@@ -77,10 +77,7 @@ const App = () => {
           {
             todos.map(todo => (
               <tr key={todo.id}>
-                <td>
-                  {todo.name}
-                </td>
-
+                <td>{todo.name}</td>
                 <td>
                   <input
                     type="checkbox"
@@ -88,14 +85,8 @@ const App = () => {
                     disabled
                   />
                 </td>
-
-                <td>
-                  {todo.number}
-                </td>
-
-                <td>
-                  {todo.created_at}
-                </td>
+                <td>{todo.number}</td>
+                <td>{todo.created_at}</td>
               </tr>
             ))
           }
