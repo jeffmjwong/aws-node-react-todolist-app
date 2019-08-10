@@ -1,10 +1,10 @@
-import { GraphQLObjectType, GraphQLString } from 'graphql';
+import { GraphQLObjectType, GraphQLString, GraphQLID } from 'graphql';
 
 export const TodoType = new GraphQLObjectType({
   name: 'Todo',
   type: 'Query',
   fields: {
-    id: { type: GraphQLString },
+    id: { type: GraphQLID },
     name: { type: GraphQLString },
     completed: { type: GraphQLString },
     number: { type: GraphQLString },
