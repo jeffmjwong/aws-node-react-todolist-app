@@ -1,7 +1,12 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import expressGraphQL from 'express-graphql';
+import { GraphQLSchema } from 'graphql';
+
 import db from './db';
+
+import query from './graphql/queries';
 
 const app = express();
 
@@ -30,6 +35,16 @@ app.post('/todos', (req, res) => {
     .then(data => res.json(data))
     .catch(err => res.status(422).json(`Database error: ${err.message}`));
 })
+
+const graphqlSchema = new GraphQLSchema({ query });
+
+app.get(
+  '/graphql',
+  expressGraphQL({
+    schema: graphqlSchema,
+    graphiql: true
+  })
+)
 
 app.listen(3001, () => {
   console.log('Server has been started and listening on port 3001...');
