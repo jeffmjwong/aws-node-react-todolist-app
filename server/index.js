@@ -5,7 +5,6 @@ import expressGraphQL from 'express-graphql';
 import { GraphQLSchema } from 'graphql';
 
 import db from './db';
-
 import query from './graphql/queries';
 
 const app = express();
