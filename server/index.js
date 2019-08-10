@@ -38,7 +38,7 @@ app.post('/todos', (req, res) => {
 
 const graphqlSchema = new GraphQLSchema({ query });
 
-app.get(
+app.use(
   '/graphql',
   expressGraphQL({
     schema: graphqlSchema,
