@@ -9,11 +9,49 @@ const App = () => {
   const [newTodos, setNewTodos] = useState([]);
   const [error, setError] = useState('');
 
-  useEffect(() => {
-    getTodos()
-      .then(todos => setTodos(todos))
-      .catch(err => setError(err.message));
-  }, []);
+  // useEffect(() => {
+  //   getTodos()
+  //     .then(todos => setTodos(todos))
+  //     .catch(err => setError(err.message));
+  // }, []);
+
+  const doSomething = async () => {
+    const query1 = `
+    query getTodo($id: ID!) {
+      todo(id: $id) {
+        id
+        name
+        completed
+        number
+      }
+    }
+    `;
+
+    const query2 = `
+    query getTodos {
+      todos {
+        id
+        name
+        completed
+        number
+      }
+    }
+    `;
+
+    const id = 23;
+
+    try {
+      const response = await fetch('http://localhost:3001/graphql', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query: query1, variables: { id } })
+      })
+      const result = await response.json();
+      setTodos([result.data.todo]);
+    } catch(err) {
+      const errr = err;
+    }
+  };
 
   const placeNewTodo = () => {
     setNewTodos([...newTodos, { id: uuidv1(), name: '', completed: false, number: '' }]);
@@ -148,6 +186,8 @@ const App = () => {
           </tr>
         </tbody>
       </table>
+
+      <button onClick={doSomething}>Click me!</button>
 
       {
         error && <div className="error-message">{error}</div>
