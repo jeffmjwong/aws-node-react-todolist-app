@@ -23,6 +23,11 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: ['babel-loader']
+      },
+      {
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,
+        use: ['webpack-graphql-loader']
       }
     ]
   }
