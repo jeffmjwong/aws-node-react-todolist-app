@@ -12,9 +12,11 @@ import db from '../db';
 export default new GraphQLObjectType({
   name: 'RootQueryType',
   type: 'Query',
+  description: 'Main entry point for root query',
   fields: {
     todos: {
       type: new GraphQLList(TodoType),
+      description: 'All todos',
       resolve: async (parentValue, args) => {
         try {
           return await db.any('SELECT * FROM todos');
