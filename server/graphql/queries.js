@@ -1,19 +1,18 @@
-import { GraphQLObjectType, GraphQLString } from 'graphql';
-import { TodoType } from './queries';
+import { GraphQLObjectType, GraphQLString, GraphQLList } from 'graphql';
+import { TodoType } from './types';
 import db from '../db';
 
 export default new GraphQLObjectType({
-  name: 'RootQuery',
+  name: 'RootQueryType',
   type: 'Query',
   fields: {
-    user: {
-      type: GraphQLString,
-      args: { name: { type: GraphQLString } },
-      resolve(parentValue, args) {
-        if (args.name) {
-          return `Hello I am a user, my name is ${args.name}!`;
-        } else {
-          return 'Hello I am a user!';
+    todos: {
+      type: new GraphQLList(TodoType),
+      resolve: async (parentValue, args) => {
+        try {
+          return await db.any('SELECT * from todos');
+        } catch(err) {
+          return err;
         }
       }
     }
