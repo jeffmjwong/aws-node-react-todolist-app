@@ -1,5 +1,5 @@
 import { GRAPHQL_URL } from './constants';
-import getTodosQuery from './queries/getTodos.gql';
+import getTodosQuery from './queries/getTodosQuery.gql';
 
 export const getTodosGraphQL = async () => {
   const response = await fetch(GRAPHQL_URL, {
