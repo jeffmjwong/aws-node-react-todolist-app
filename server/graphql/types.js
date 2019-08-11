@@ -9,6 +9,7 @@ import {
 export const TodoType = new GraphQLObjectType({
   name: 'Todo',
   type: 'Query',
+  description: 'A TodoType describing the shape of a Todo'
   fields: {
     id: { type: GraphQLID },
     name: { type: GraphQLString },
