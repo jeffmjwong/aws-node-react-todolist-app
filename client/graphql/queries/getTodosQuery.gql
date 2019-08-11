@@ -1,0 +1,10 @@
+query getTodos {
+  todos {
+    id
+    name
+    completed
+    number
+    created_at
+    updated_at
+  }
+}
